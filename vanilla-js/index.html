@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My first web component</title>
   <script src="tooltip.js"></script>
+  <script src="modal.js"></script>
   <style>
     html {
       --color-primary: #a95f5f;
@@ -17,6 +18,7 @@
   </style>
 </head>
 <body>
+  <h3>Tooltip component</h3> 
   <lez-tooltip text="Loooooooooooong tooltip">
     <span class="slotted"> <!--This is stylizable cause it's first level-->
       <span class="slotted-content"> <!--This is not stylizable-->
@@ -24,8 +26,18 @@
       </span>!
     </span>
   </lez-tooltip>
-  <div>
-    <span>Another text, just for test</span>
-  </div>
+  <h3>Modal component</h3>
+  <lez-modal>
+    <h1 slot="title">Please confirm</h1>
+    <p>Si va a lettuccio?</p>
+  </lez-modal>
+  <button id="open-btn">Open modal</button>
+
+  <script>
+    let btn = document.querySelector('#open-btn');
+    btn.addEventListener('click', () => {
+      document.querySelector('lez-modal').show();
+    });
+  </script>
 </body>
 </html>

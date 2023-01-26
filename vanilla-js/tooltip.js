@@ -26,7 +26,7 @@ class Tooltip extends HTMLElement {
           position: absolute;
           z-index: 10;
         }
-        
+
       </style>
       <slot>Some default</slot>
       <span> (?)</span>
@@ -48,7 +48,7 @@ class Tooltip extends HTMLElement {
     this.shadowRoot.appendChild(tooltipIcon);
   }
 
-  attributeChangedAttribute(name, oldValue, newValue) {
+  attributeChangedCallback(name, oldValue, newValue) {
     if (oldValue === newValue) {
       return;
     }
