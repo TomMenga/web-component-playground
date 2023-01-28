@@ -6,56 +6,39 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
-    interface MyComponent {
-        /**
-          * The first name
-         */
-        "first": string;
-        /**
-          * The last name
-         */
-        "last": string;
-        /**
-          * The middle name
-         */
-        "middle": string;
+    interface LezSideDrawer {
+        "close": () => Promise<void>;
+        "isOpen": boolean;
+        "open": () => Promise<void>;
+        "panelTitle": string;
+        "toggle": () => Promise<void>;
     }
 }
 declare global {
-    interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
+    interface HTMLLezSideDrawerElement extends Components.LezSideDrawer, HTMLStencilElement {
     }
-    var HTMLMyComponentElement: {
-        prototype: HTMLMyComponentElement;
-        new (): HTMLMyComponentElement;
+    var HTMLLezSideDrawerElement: {
+        prototype: HTMLLezSideDrawerElement;
+        new (): HTMLLezSideDrawerElement;
     };
     interface HTMLElementTagNameMap {
-        "my-component": HTMLMyComponentElement;
+        "lez-side-drawer": HTMLLezSideDrawerElement;
     }
 }
 declare namespace LocalJSX {
-    interface MyComponent {
-        /**
-          * The first name
-         */
-        "first"?: string;
-        /**
-          * The last name
-         */
-        "last"?: string;
-        /**
-          * The middle name
-         */
-        "middle"?: string;
+    interface LezSideDrawer {
+        "isOpen"?: boolean;
+        "panelTitle"?: string;
     }
     interface IntrinsicElements {
-        "my-component": MyComponent;
+        "lez-side-drawer": LezSideDrawer;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+            "lez-side-drawer": LocalJSX.LezSideDrawer & JSXBase.HTMLAttributes<HTMLLezSideDrawerElement>;
         }
     }
 }
