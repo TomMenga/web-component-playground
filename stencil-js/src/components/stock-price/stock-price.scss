@@ -1,3 +1,22 @@
 :host {
   display: block;
+  font-family: sans-serif;
+  border: 2px solid rgb(94, 0, 94);
+  padding: 1rem;
+  width: 15rem;
+  max-width: 100%;
+}
+
+form {
+  input {
+    font-family: inherit;
+    color: rgb(94, 0, 94);
+    padding: .15rem .25rem;
+  }
+
+  button {
+    font-family: inherit;
+    padding: .25rem .5rem;
+    border: 1px solid rgb(94, 0, 94);
+  }
 }

@@ -13,6 +13,9 @@ export namespace Components {
         "panelTitle": string;
         "toggle": () => Promise<void>;
     }
+    interface LezStockPrice {
+        "stockSymbol": string;
+    }
 }
 declare global {
     interface HTMLLezSideDrawerElement extends Components.LezSideDrawer, HTMLStencilElement {
@@ -21,8 +24,15 @@ declare global {
         prototype: HTMLLezSideDrawerElement;
         new (): HTMLLezSideDrawerElement;
     };
+    interface HTMLLezStockPriceElement extends Components.LezStockPrice, HTMLStencilElement {
+    }
+    var HTMLLezStockPriceElement: {
+        prototype: HTMLLezStockPriceElement;
+        new (): HTMLLezStockPriceElement;
+    };
     interface HTMLElementTagNameMap {
         "lez-side-drawer": HTMLLezSideDrawerElement;
+        "lez-stock-price": HTMLLezStockPriceElement;
     }
 }
 declare namespace LocalJSX {
@@ -30,8 +40,12 @@ declare namespace LocalJSX {
         "isOpen"?: boolean;
         "panelTitle"?: string;
     }
+    interface LezStockPrice {
+        "stockSymbol"?: string;
+    }
     interface IntrinsicElements {
         "lez-side-drawer": LezSideDrawer;
+        "lez-stock-price": LezStockPrice;
     }
 }
 export { LocalJSX as JSX };
@@ -39,6 +53,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "lez-side-drawer": LocalJSX.LezSideDrawer & JSXBase.HTMLAttributes<HTMLLezSideDrawerElement>;
+            "lez-stock-price": LocalJSX.LezStockPrice & JSXBase.HTMLAttributes<HTMLLezStockPriceElement>;
         }
     }
 }
