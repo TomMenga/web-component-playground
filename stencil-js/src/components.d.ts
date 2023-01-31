@@ -16,6 +16,13 @@ export namespace Components {
     interface LezStockPrice {
         "stockSymbol": string;
     }
+    interface StockFinder {
+        "searchValue": string;
+    }
+}
+export interface StockFinderCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLStockFinderElement;
 }
 declare global {
     interface HTMLLezSideDrawerElement extends Components.LezSideDrawer, HTMLStencilElement {
@@ -30,9 +37,16 @@ declare global {
         prototype: HTMLLezStockPriceElement;
         new (): HTMLLezStockPriceElement;
     };
+    interface HTMLStockFinderElement extends Components.StockFinder, HTMLStencilElement {
+    }
+    var HTMLStockFinderElement: {
+        prototype: HTMLStockFinderElement;
+        new (): HTMLStockFinderElement;
+    };
     interface HTMLElementTagNameMap {
         "lez-side-drawer": HTMLLezSideDrawerElement;
         "lez-stock-price": HTMLLezStockPriceElement;
+        "stock-finder": HTMLStockFinderElement;
     }
 }
 declare namespace LocalJSX {
@@ -43,9 +57,14 @@ declare namespace LocalJSX {
     interface LezStockPrice {
         "stockSymbol"?: string;
     }
+    interface StockFinder {
+        "onSearchCompleted"?: (event: StockFinderCustomEvent<{symbol: string, name: string}[]>) => void;
+        "searchValue"?: string;
+    }
     interface IntrinsicElements {
         "lez-side-drawer": LezSideDrawer;
         "lez-stock-price": LezStockPrice;
+        "stock-finder": StockFinder;
     }
 }
 export { LocalJSX as JSX };
@@ -54,6 +73,7 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "lez-side-drawer": LocalJSX.LezSideDrawer & JSXBase.HTMLAttributes<HTMLLezSideDrawerElement>;
             "lez-stock-price": LocalJSX.LezStockPrice & JSXBase.HTMLAttributes<HTMLLezStockPriceElement>;
+            "stock-finder": LocalJSX.StockFinder & JSXBase.HTMLAttributes<HTMLStockFinderElement>;
         }
     }
 }
